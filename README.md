@@ -6,7 +6,10 @@ As Social Media start to influence the life of many children, teenagers, adults 
 
 ## Background and Motivation
 
+"*" Social media has influenced some people to think that their life is not interesting, they aren't as happy as they should be, they should be getting more "likes", have more followeres because if they don't then they are considered losers.  All this develops anxiety and stress that can lead someone to become angry, depressed or feel extremly lonely.
 "*" 
+
+The rise on mental health for various social media users.
 
 ## Goals
 
