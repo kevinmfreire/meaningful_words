@@ -7,11 +7,12 @@ As Social Media start to influence the life of many children, teenagers, adults 
 ## Background and Motivation
 
 * Social media has influenced some people to think that their life is not interesting, they aren't as happy as they should be, they should be getting more "likes", have more followeres because if they don't then they are considered losers.  All this develops anxiety and stress that can lead someone to become angry, depressed or feel extremly lonely.
-* The extreme rise in mental health issues.
-
-The rise on mental health for various social media users.
+* The rise on mental health for various social media users.
 
 ## Goals
+
+* Build a classifier to distinguish comments, posts, texts as negative, positive or neutral.
+* Build a recommender system to feed into the individuals newsfeed positive posts such as images, inspirational quotes that elevates their mood.
 
 ## Datasets
 
