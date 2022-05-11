@@ -18,6 +18,9 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140)
 
 ## Practical Applications
+* Social media apps tracking users in the background for mental health issues.
+* suggest accounts to follow that can feed the users newsfeed with positive ideas to prevent user from having negative thoughts that can cause them to doubt, or talk negatively about themselves.
+* could be integrated as a web extension to track users if they are experiencing any mental health issues.
 
 ## Milestones
 
