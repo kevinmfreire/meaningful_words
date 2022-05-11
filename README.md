@@ -27,13 +27,13 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * Integrated as a web extension to track users if they are experiencing any mental health issues.
 
 ## Milestones
-# Phase 1:
+### Phase 1:
 Develope a webapp  where the user inputs their sentence (email, tweet) we would return the label of that text (negative, positive, neutral sentiment)
 
-# Phase 2:
+### Phase 2:
 Talk to the Twitter API to gather the users latest tweets and analyze them (send them to the model) and return the users overall sentiment (mood).
 
-# Phase 3:
+### Phase 3:
 Include recommender system feeds the users to follow accounts that can imporve someones mental health.
 
 ## References
