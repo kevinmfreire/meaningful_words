@@ -16,7 +16,8 @@ As Social Media start to influence the life of many children, teenagers, adults 
 
 ## Datasets
 * [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140)
-* [Twitter Tweets Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset)
+* [Kaggle Twitter Tweets Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset)
+* [OpenML Emotions--Sensor-Data-Set](https://www.openml.org/search?type=data&status=active&id=43756)
 
 ## Practical Applications
 * Social media apps tracking users in the background for mental health issues.
