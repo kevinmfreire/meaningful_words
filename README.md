@@ -15,6 +15,7 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * Build a recommender system to feed into the individuals newsfeed positive posts such as images, inspirational quotes that elevates their mood.
 
 ## Datasets
+* [Twitter Tweet Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset)
 
 ## Practical Applications
 
