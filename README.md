@@ -15,9 +15,11 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * Build a recommender system to feed into the individuals newsfeed positive posts such as images, inspirational quotes that elevates their mood.
 
 ## Datasets
-* [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140)
-* [Kaggle Twitter Tweets Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset)
-* [OpenML Emotions--Sensor-Data-Set](https://www.openml.org/search?type=data&status=active&id=43756)
+* [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140) Good but not alot of labels
+* [Kaggle Twitter Tweets Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset) Good but not alot of labels
+* [OpenML Emotions--Sensor-Data-Set](https://www.openml.org/search?type=data&status=active&id=43756) This one is not bad
+* [Sentiment Analysis in Text](https://data.world/crowdflower/sentiment-analysis-in-text) I like this one
+* [Emotions Dataset](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp) I like this one
 
 ## Practical Applications
 * Social media apps tracking users in the background for mental health issues.
