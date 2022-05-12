@@ -37,3 +37,6 @@ Talk to the Twitter API to gather the users latest tweets and analyze them (send
 Include recommender system feeds the users to follow accounts that can imporve someones mental health.
 
 ## References
+* [Text Classification Using Logistic Regression](https://medium.com/analytics-vidhya/applying-text-classification-using-logistic-regression-a-comparison-between-bow-and-tf-idf-1f1ed1b83640)
+* [Text Classification using SVM and Naive Bayes](https://medium.com/@bedigunjit/simple-guide-to-text-classification-nlp-using-svm-and-naive-bayes-with-python-421db3a72d34)
+* [Text Classification Using K-Nearest Neighbor](https://medium.com/@ashins1997/text-classification-456513e18893)
