@@ -67,15 +67,15 @@ print('Training set  ---> ','feature size: ',X_train.shape,'label size',len(y_tr
 print('Test set  --->  ','feature size: ',X_test.shape,'label size',len(y_test))
 
 # Building Logistic Regression Classifier
-# log_reg_model = LogisticRegression()
-# log_reg_model.fit(X_train, y_train)
-# pred = log_reg_model.predict(X_test)
-# pred_prob = log_reg_model.predict_proba(X_test)
-# classification_summary(pred,pred_prob,'Logistic Regression (LR)')
+log_reg_model = LogisticRegression()
+log_reg_model.fit(X_train, y_train)
+pred = log_reg_model.predict(X_test)
+pred_prob = log_reg_model.predict_proba(X_test)
+classification_summary(pred,pred_prob,'Logistic Regression (LR)')
 
 # Building  Decision Tree Classifier
-DT_model = DecisionTreeClassifier()
-DT_model.fit(X_train, y_train)
-pred = DT_model.predict(X_test)
-pred_prob = DT_model.predict_proba(X_test)
-classification_summary(pred, pred_prob, 'Decision Tree Classifier (DT)')
+# DT_model = DecisionTreeClassifier()
+# DT_model.fit(X_train, y_train)
+# pred = DT_model.predict(X_test)
+# pred_prob = DT_model.predict_proba(X_test)
+# classification_summary(pred, pred_prob, 'Decision Tree Classifier (DT)')
