@@ -3,7 +3,7 @@ from sklearn.naive_bayes import BernoulliNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
 
-from main import classification_summary, train_test_data, load_data
+from evaluate import classification_summary, train_test_data, load_data
 
 if __name__ == 'main':
 
