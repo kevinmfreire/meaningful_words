@@ -66,8 +66,8 @@ def train_test_data(label, feature, test_size=0.2, random_state=0):
 
 if __name__ == '__main__':
     
-    label_file = './data/label.npy'
-    feature_file = './data/feature.npy'
+    label_file = '../data/processed/label.npy'
+    feature_file = '../data/processed/feature.npy'
 
     label, feature = load_data(label_file, feature_file)
     X_train, X_test, y_train, y_test = train_test_data(label, feature)

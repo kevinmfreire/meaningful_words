@@ -97,18 +97,18 @@ def process_data(dataframe, target):
   label=df_clean[target].values
   features=tf_idf.fit_transform(df_clean.text)
 
-  save_path_label = './data/label.npy'
-  save_path_feature = './data/feature.npy'
+  save_path_label = '../data/processed/label.npy'
+  save_path_feature = '../data/processed/feature.npy'
   np.save(save_path_label, label, allow_pickle=True)
   np.save(save_path_feature, features, allow_pickle=True)
 
 if __name__ == '__main__':
   
-  path = './data/tweets.csv'
+  path = '../data/raw/tweets.csv'
   target = 'sentiment'
 
   porter = PorterStemmer()
 
   tweet_df = upload_data(path)
   process_data(tweet_df, target)
-  print('ALL WENT SMOOTHLY')
+  print('Data finsihed processing!')

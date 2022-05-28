@@ -7,8 +7,8 @@ from evaluate import classification_summary, train_test_data, load_data
 
 if __name__ == 'main':
 
-    label_file = './data/label.npy'
-    feature_file = './data/feature.npy'
+    label_file = '../data/processed/label.npy'
+    feature_file = '../data/processed/feature.npy'
 
     label, feature = load_data(label_file, feature_file)
     X_train, X_test, y_train, y_test = train_test_data(label, feature)
