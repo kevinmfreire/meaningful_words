@@ -7,11 +7,6 @@ from sklearn.model_selection import train_test_split,RandomizedSearchCV,Repeated
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score,roc_auc_score, roc_curve, precision_score, recall_score
 from scikitplot.metrics import plot_roc_curve as auc_roc
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import BernoulliNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
-
 def classification_summary(pred, pred_prob, model):
     # result_df.loc[model,'Accuracy'] = round(accuracy_score(y_test,pred),3)*100
     # result_df.loc[model,'Precision'] = round(precision_score(y_test,pred,average='weighted'),3)*100
@@ -47,35 +42,32 @@ def auc_roc_plot(y_test,pred):
     plt.legend()
     plt.show()
 
-# Load pre processed data
-label_file = './data/label.npy'
-feature_file = './data/feature.npy'
-label = np.load(label_file, allow_pickle=True)
-feature = np.load(feature_file, allow_pickle=True)
+def load_data(label_file, feature_file):
+    # Load pre processed data
+    label = np.load(label_file, allow_pickle=True)
+    feature = np.load(feature_file, allow_pickle=True)
+    return label, feature
 
-#Assign labels to target value
-label_mapping = {'negative':0,  'positive':1}
+def train_test_data(label, feature, test_size=0.2, random_state=0):
+    #Assign labels to target value
+    label_mapping = {'negative':0, 'neutral':1, 'positive':2}
 
-# Split data into training and testing sets
-X = feature.tolist()
-y = pd.Series(label).map(label_mapping)
+    # Split data into training and testing sets
+    X = feature.tolist()
+    y = pd.Series(label).map(label_mapping)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
 
-print('Original set  ---> ','feature size: ',X.shape,'label size',len(y))
-print('Training set  ---> ','feature size: ',X_train.shape,'label size',len(y_train))
-print('Test set  --->  ','feature size: ',X_test.shape,'label size',len(y_test))
+    print('Original set  ---> ','feature size: ',X.shape,'label size',len(y))
+    print('Training set  ---> ','feature size: ',X_train.shape,'label size',len(y_train))
+    print('Test set  --->  ','feature size: ',X_test.shape,'label size',len(y_test))
 
-# Building Logistic Regression Classifier
-log_reg_model = LogisticRegression()
-log_reg_model.fit(X_train, y_train)
-pred = log_reg_model.predict(X_test)
-pred_prob = log_reg_model.predict_proba(X_test)
-classification_summary(pred,pred_prob,'Logistic Regression (LR)')
+    return X_train, X_test, y_train, y_test
 
-# Building  Decision Tree Classifier
-# DT_model = DecisionTreeClassifier()
-# DT_model.fit(X_train, y_train)
-# pred = DT_model.predict(X_test)
-# pred_prob = DT_model.predict_proba(X_test)
-# classification_summary(pred, pred_prob, 'Decision Tree Classifier (DT)')
+if __name__ == '__main__':
+    
+    label_file = './data/label.npy'
+    feature_file = './data/feature.npy'
+
+    label, feature = load_data(label_file, feature_file)
+    X_train, X_test, y_train, y_test = train_test_data(label, feature)
