@@ -6,8 +6,9 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split,RandomizedSearchCV,RepeatedStratifiedKFold,GridSearchCV
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score,roc_auc_score, roc_curve, precision_score, recall_score
 from scikitplot.metrics import plot_roc_curve as auc_roc
+from sklearn.linear_model import LogisticRegression
 
-def classification_summary(pred, pred_prob, model):
+def classification_summary(pred, pred_prob, y_test, model):
     # result_df.loc[model,'Accuracy'] = round(accuracy_score(y_test,pred),3)*100
     # result_df.loc[model,'Precision'] = round(precision_score(y_test,pred,average='weighted'),3)*100
     # result_df.loc[model,'Recall'] = round(recall_score(y_test,pred,average='weighted'),3)*100
@@ -53,7 +54,7 @@ def train_test_data(label, feature, test_size=0.2, random_state=0):
     label_mapping = {'negative':0, 'neutral':1, 'positive':2}
 
     # Split data into training and testing sets
-    X = feature.tolist()
+    X = feature                                             # If uploading features as .npy files then X = feature.tolist()
     y = pd.Series(label).map(label_mapping)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
@@ -63,11 +64,3 @@ def train_test_data(label, feature, test_size=0.2, random_state=0):
     print('Test set  --->  ','feature size: ',X_test.shape,'label size',len(y_test))
 
     return X_train, X_test, y_train, y_test
-
-if __name__ == '__main__':
-    
-    label_file = '../data/processed/label.npy'
-    feature_file = '../data/processed/feature.npy'
-
-    label, feature = load_data(label_file, feature_file)
-    X_train, X_test, y_train, y_test = train_test_data(label, feature)

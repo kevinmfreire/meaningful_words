@@ -34,10 +34,6 @@ def preprocessor(text):
   text = ' '.join([word for word in text.split() if word not in stopwords.words('english')])
   return text
 
-# This tokenizer is used for the TF-IDF feature extraction and the stemmer is called in if __name__ == '__main__' section 
-def tokenizer_porter(text):
-  return [porter.stem(word) for word in text.split()]
-
 def upload_data(path):
   '''
   DATA UPLOAD AND EXPLORATION
@@ -60,7 +56,7 @@ def upload_data(path):
   print(tweet_df.describe())
   return tweet_df
 
-def process_data(dataframe, target):
+def process_data(dataframe):
   '''
   DATA PROCESSING:
 
@@ -92,23 +88,24 @@ def process_data(dataframe, target):
   df_clean['text'] = df_dedup['text'].apply(preprocessor)
   print(df_clean.head())
 
-  
-  tf_idf = TfidfVectorizer(strip_accents=None, lowercase=False, preprocessor=None, tokenizer=tokenizer_porter, use_idf=True, norm='l2', smooth_idf=True)
-  label=df_clean[target].values
-  features=tf_idf.fit_transform(df_clean.text)
+  save_path_cleanDF = '../data/processed/clean_data.pkl'
+  df_clean.to_pickle(save_path_cleanDF)
 
+  return df_clean
+
+def tokenize_data(tf_idf_model, dataFrame, target):
+  tf_idf = tf_idf_model
+  label=dataFrame[target].values
+  features=tf_idf.fit_transform(dataFrame.text)
   save_path_label = '../data/processed/label.npy'
   save_path_feature = '../data/processed/feature.npy'
   np.save(save_path_label, label, allow_pickle=True)
   np.save(save_path_feature, features, allow_pickle=True)
+  return label, features
 
 if __name__ == '__main__':
   
   path = '../data/raw/tweets.csv'
-  target = 'sentiment'
-
-  porter = PorterStemmer()
-
   tweet_df = upload_data(path)
-  process_data(tweet_df, target)
+  process_data(tweet_df)
   print('Data finsihed processing!')
