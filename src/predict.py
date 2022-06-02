@@ -19,10 +19,11 @@ def predict(text):
     features = tf_idf.transform(p_text)
     pred = model.predict(features)
 
-    print('Your tweet is classified as {}'.format(label_decoder.get(pred[0])))
+    return label_decoder.get(pred[0])
 
 if __name__ == "__main__":
 
     text = input("Type tweet: ")
 
-    predict(text)
+    pred = predict(text)
+    print('Your tweet is classified as {}'.format(pred))
