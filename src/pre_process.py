@@ -15,6 +15,10 @@ from nltk.stem.porter import PorterStemmer
 # nltk.download('stopwords')
 # nltk.download('omw-1.4')
 
+def label_decoder(label):
+  to_sentiment = {0:'negative', 1:'neutral', 2:'positive'}
+  return to_sentiment[label]
+
 # Split data by scale factor for faster preprocessing
 def split_data(data, scale):
   neg_df = data[data['sentiment']=='negative']

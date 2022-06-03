@@ -7,11 +7,11 @@ def tokenizer_porter(text):
     porter = PorterStemmer()
     return [porter.stem(word) for word in text.split()]
 
-def predict(text):
+def classify(text, tf_idf, model):
     label_decoder = {0:'negative', 1:'neautral', 2:'positive'}
 
-    tf_idf = pickle.load(open("../models/td_idf.pickle", "rb"))
-    model = pickle.load(open("../models/log_reg_model.pickle", "rb"))
+    # tf_idf = pickle.load(open("../models/td_idf.pickle", "rb"))
+    # model = pickle.load(open("../models/log_reg_model.pickle", "rb"))
 
     p_text = preprocessor(text)
     p_text = [p_text]
@@ -23,7 +23,10 @@ def predict(text):
 
 if __name__ == "__main__":
 
+    tf_idf = pickle.load(open("../models/td_idf.pickle", "rb"))
+    model = pickle.load(open("../models/log_reg_model.pickle", "rb"))
+
     text = input("Type tweet: ")
 
-    pred = predict(text)
+    pred = classify(text, tf_idf, model)
     print('Your tweet is classified as {}'.format(pred))

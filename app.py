@@ -1,20 +1,32 @@
 from flask import Flask, request, render_template
 import pickle
+import sys
 
-from src.predict import predict
-from src.pre_process import preprocessor
+sys.path.append("./src")
+sys.path.append("./models")
+
+from src.predict import classify
+from nltk.stem.porter import PorterStemmer
+
+def tokenizer_porter(text):
+    porter = PorterStemmer()
+    return [porter.stem(word) for word in text.split()]
 
 app = Flask(__name__)
-model = pickle.load(open('models/log_reg_model.pickle', 'rb'))
+tf_idf = pickle.load(open("./models/td_idf.pickle", "rb"))
+model = pickle.load(open("./models/log_reg_model.pickle", "rb"))
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
     """Grabs the input values and uses them to make prediction"""
-    tweet = request.form["tweet"]
-    prediction = model.predict([tweet])  # this returns a list e.g. [127.20488798], so pick first element [0]
-    output = prediction
+    tweet = request.form['tweet']
+    prediction = classify(tweet, tf_idf, model)
 
-    return render_template('index.html', prediction_text=f'Your tweet "{tweet}" is classified as {output} sentiment.')
+    return render_template('index.html', prediction_text=f'Your tweet "{tweet}" is classified as {prediction} sentiment.')
 
 if __name__=="__main__":
     app.run(host="0.0.0.0")
