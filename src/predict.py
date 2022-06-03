@@ -3,9 +3,9 @@ import pickle
 from pre_process import preprocessor
 from nltk.stem.porter import PorterStemmer
 
-def tokenizer_porter(text):
-    porter = PorterStemmer()
-    return [porter.stem(word) for word in text.split()]
+# def tokenizer_porter(text):
+#     porter = PorterStemmer()
+#     return [porter.stem(word) for word in text.split()]
 
 def classify(text, tf_idf, model):
     label_decoder = {0:'negative', 1:'neautral', 2:'positive'}

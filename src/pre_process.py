@@ -19,6 +19,10 @@ def label_decoder(label):
   to_sentiment = {0:'negative', 1:'neutral', 2:'positive'}
   return to_sentiment[label]
 
+def tokenizer_porter(text):
+  porter = PorterStemmer()
+  return [porter.stem(word) for word in text.split()]
+
 # Split data by scale factor for faster preprocessing
 def split_data(data, scale):
   neg_df = data[data['sentiment']=='negative']

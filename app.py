@@ -8,9 +8,9 @@ sys.path.append("./models")
 from src.predict import classify
 from nltk.stem.porter import PorterStemmer
 
-def tokenizer_porter(text):
-    porter = PorterStemmer()
-    return [porter.stem(word) for word in text.split()]
+# def tokenizer_porter(text):
+#     porter = PorterStemmer()
+#     return [porter.stem(word) for word in text.split()]
 
 app = Flask(__name__)
 tf_idf = pickle.load(open("./models/td_idf.pickle", "rb"))

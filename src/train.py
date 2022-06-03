@@ -8,11 +8,11 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
 
 from evaluate import classification_summary, train_test_data
-from pre_process import tokenize_data
+from pre_process import tokenize_data, tokenizer_porter
 
 # This tokenizer is used for the TF-IDF feature extraction and the stemmer is called in if __name__ == '__main__' section 
-def tokenizer_porter(text):
-  return [porter.stem(word) for word in text.split()]
+# def tokenizer_porter(text):
+#   return [porter.stem(word) for word in text.split()]
 
 if __name__ == '__main__':
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
   clean_data_file = '../data/processed/clean_data.pkl'
   target = 'sentiment'
 
-  porter = PorterStemmer()
+  # porter = PorterStemmer()
   tf_idf = TfidfVectorizer(strip_accents=None, lowercase=False, preprocessor=None, tokenizer=tokenizer_porter, use_idf=True, norm='l2', smooth_idf=True)
 
   clean_df = pd.read_pickle(clean_data_file)
