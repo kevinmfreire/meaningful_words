@@ -9,12 +9,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-# Dwnloading NLTK packages (Only need to be run once)
-# nltk.download('punkt')
-# nltk.download('wordnet')
-# nltk.download('stopwords')
-# nltk.download('omw-1.4')
-
 def label_decoder(label):
   to_sentiment = {0:'negative', 1:'neutral', 2:'positive'}
   return to_sentiment[label]
@@ -32,7 +26,7 @@ def split_data(data, scale):
   new_df = pd.concat([neg_df, pos_df], axis=0)
   return new_df
 
-def preprocessor(text):
+def text_preprocessor(text):
   text = re.sub('[^a-zA-Z]',' ', text)    # remove punctuation
   text = text.lower()                     # convert to lowercase
   text = text.strip()                     # remove leading and tailing whitespacess
@@ -47,18 +41,10 @@ def upload_data(path):
   DATA UPLOAD AND EXPLORATION
   '''
   # Load dataset
-  # DATASET_COLUMNS  = ["sentiment", "ids", "date", "flag", "user", "text"]
-  # DATASET_ENCODING = "ISO-8859-1"
-  # tweet_df = pd.read_csv(path, encoding=DATASET_ENCODING , names=DATASET_COLUMNS)
   tweet_df = pd.read_csv(path, header=0)
 
   # Drop any unwanted columns
-  # tweet_df.drop(['ids','date', 'flag', 'user'], axis=1, inplace=True)
   tweet_df.drop(['selected_text', 'textID'], axis=1, inplace=True)
-
-  # The Sentiment140 dataset has labels 0-Negative and 4-Positive, let's decode them
-  # to_sentiment = {0: "negative", 4: "positive"}
-  # tweet_df.sentiment = tweet_df.sentiment.apply(lambda x: to_sentiment[x])
 
   print('\n\033[1mData Dimension:\033[0m Dataset consists of {} columns & {} records.'.format(tweet_df.shape[1], tweet_df.shape[0]))
   print(tweet_df.describe())
@@ -87,24 +73,17 @@ def process_data(dataframe):
   else:
     print(f'\n\033[1mInference:\033[0m Number of duplicates dropped/fixed ---> {r-df_dedup.shape[0]}')
 
-  # Let's split data by factor to just apply quicker preprocessing
-  # split_df = split_data(tweet_df_dedup, 4)
-
   # Data cleaning and preprocessing
   df_clean = df_dedup.copy()
-  # tweet_df_clean = split_df.copy()
-  df_clean['text'] = df_dedup['text'].apply(preprocessor)
+  df_clean['text'] = df_dedup['text'].apply(text_preprocessor)
   print(df_clean.head())
-
-  save_path_cleanDF = '../data/processed/clean_data.pkl'
-  df_clean.to_pickle(save_path_cleanDF)
 
   return df_clean
 
-def tokenize_data(tf_idf_model, dataFrame, target):
+def extract_features(tf_idf_model, dataFrame, target):
   tf_idf = tf_idf_model
   label=dataFrame[target].values
-  features=tf_idf.fit_transform(dataFrame.text)
+  features=tf_idf.fit_transform(dataFrame.text.values.astype('U'))
   save_path_label = '../data/processed/label.npy'
   save_path_feature = '../data/processed/feature.npy'
   np.save(save_path_label, label, allow_pickle=True)
@@ -114,6 +93,10 @@ def tokenize_data(tf_idf_model, dataFrame, target):
 if __name__ == '__main__':
   
   path = '../data/raw/tweets.csv'
+  clean_data_path = '../data/processed/clean_df.csv'
+
   tweet_df = upload_data(path)
-  process_data(tweet_df)
+  clean_df = process_data(tweet_df)
+  clean_df.to_csv(clean_data_path)
+
   print('Data finsihed processing!')
