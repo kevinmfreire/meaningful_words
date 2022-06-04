@@ -37,25 +37,25 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * Integrated as a web extension to track users if they are experiencing any mental health issues.
 
 ## Usage
-**Clone Repo: **
+** Clone Repo: **
 
-'git clone https://github.com/kevinmfreire/sentiment-analysis.git'
+' git clone https://github.com/kevinmfreire/sentiment-analysis.git '
 
-**Setup a virtual environment:**
+** Setup a virtual environment: **
 
-'virtualenv .virtualenv/sentiment-analysis'
+' virtualenv .virtualenv/sentiment-analysis '
 
-**Activate virtual environment:**
+** Activate virtual environment: **
 
-'source .virtualenv/sentiment-analysis'
+' source .virtualenv/sentiment-analysis '
 
-**Install all requirements using pip or any other package installer:**
+** Install all requirements using pip or any other package installer: **
 
-'pip install -r requirements.txt'
+' ip install -r requirements.txt '
 
-**Set up the required NLTK packages**
+** et up the required NLTK packages *
 
-'python nltk_setup.py'
+' ython nltk_setup.py 
 
 ## Milestones
 ### Phase 1:
