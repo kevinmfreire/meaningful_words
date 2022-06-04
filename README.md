@@ -1,14 +1,14 @@
 # Sentiment Analysis
 
 ## Table of Content
-* Overview
-* Backgraound and Motivation
-* Goals
-* Datasets
-* Practical Applications
-* Usage
-* Milestones
-* References
+* [Overview](https://github.com/kevinmfreire/sentiment-analysis#overview)
+* [Background and Motivation](https://github.com/kevinmfreire/sentiment-analysis#background-and-motivation)
+* [Goals](https://github.com/kevinmfreire/sentiment-analysis#goals)
+* [Datasets](https://github.com/kevinmfreire/sentiment-analysis#datasets)
+* [Practical Applications](https://github.com/kevinmfreire/sentiment-analysis#practical-applications)
+* [Usage](https://github.com/kevinmfreire/sentiment-analysis#usage)
+* [Milestones](https://github.com/kevinmfreire/sentiment-analysis#milestones)
+* [References](https://github.com/kevinmfreire/sentiment-analysis#references)
 
 ## Overview
 
