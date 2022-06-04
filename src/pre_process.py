@@ -92,7 +92,7 @@ def extract_features(tf_idf_model, dataFrame, target):
 
 if __name__ == '__main__':
   
-  path = '../data/raw/tweets.csv'
+  path = '../data/raw/Tweets.csv'
   clean_data_path = '../data/processed/clean_df.csv'
 
   tweet_df = upload_data(path)
