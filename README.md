@@ -55,7 +55,7 @@ As Social Media start to influence the life of many children, teenagers, adults 
 
 ** et up the required NLTK packages *
 
-' ython nltk_setup.py 
+' python nltk_setup.py '
 
 ## Milestones
 ### Phase 1:
