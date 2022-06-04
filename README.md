@@ -28,12 +28,6 @@ As Social Media start to influence the life of many children, teenagers, adults 
 ### Prerequisite for downloading datasets from kaggle
 * Have an account with Kaggle and create an API key (if you have not done this before) which will save as a `kaggle.json` file.
 * Save your `.json` file under your home directory.  If you are using Linux then it will go under `~/.kaggle/kaggle.json`, if you're using Windos then follow the link [here](https://www.kaggle.com/docs/api).
-* To download the dataset that was used for this project then use the following command to download your dataset:
-
-```
-kaggle datasets download -p ./data/raw/ --unzip yasserh/twitter-tweets-sentiment-dataset
-```
-
 
 * [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140) - Good but not a lot of labels
 * [Kaggle Twitter Tweets Sentiment Dataset](https://www.kaggle.com/datasets/yasserh/twitter-tweets-sentiment-dataset) - Good but not a lot of labels
@@ -67,9 +61,27 @@ source .virtualenv/sentiment-analysis
 pip install -r requirements.txt
 ```
 
+* Download the dataset for this project:
+
+```
+kaggle datasets download -p ./data/raw/ --unzip yasserh/twitter-tweets-sentiment-dataset
+```
+
 * Setup the required NLTK packages
 ```
 python nltk_setup.py
+```
+
+* To preprocess and train model you must be in the `src/` directory and run the following:
+```
+python pre_process.py
+python train.py
+
+```
+
+* To run web application stay in the main directory and run the command:
+```
+python app.py
 ```
 
 ## Milestones
