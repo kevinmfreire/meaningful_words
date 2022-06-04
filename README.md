@@ -76,7 +76,6 @@ python nltk_setup.py
 ```
 python pre_process.py
 python train.py
-
 ```
 
 * To run web application stay in the main directory and run the command:
