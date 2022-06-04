@@ -45,7 +45,7 @@ As Social Media start to influence the life of many children, teenagers, adults 
 
 **Install all requirements using pip or any other package installer:** `pip install -r requirements.txt`
 
-**get up the required NLTK packages** `python nltk_setup.py`
+**Setup the required NLTK packages** `python nltk_setup.py`
 
 ## Milestones
 ### Phase 1:
