@@ -37,7 +37,7 @@ As Social Media start to influence the life of many children, teenagers, adults 
 * Integrated as a web extension to track users if they are experiencing any mental health issues.
 
 ## Usage
-**Clone Repo:** 
+* Clone Repo:
 ```
 git clone https://github.com/kevinmfreire/sentiment-analysis.git
 ```
