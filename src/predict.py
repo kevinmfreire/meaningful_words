@@ -3,7 +3,7 @@ import pickle
 from pre_process import text_preprocessor
 
 def classify(text, tf_idf, model):
-    label_decoder = {0:'negative', 1:'neautral', 2:'positive'}
+    label_decoder = {0:'negative', 1:'neutral', 2:'positive'}
 
     # tf_idf = pickle.load(open("../models/td_idf.pickle", "rb"))
     # model = pickle.load(open("../models/log_reg_model.pickle", "rb"))

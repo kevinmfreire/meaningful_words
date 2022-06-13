@@ -10,18 +10,20 @@
 </head>
   
 <body>
-    <div class="login">
-        <h2>Tweet Sentiment Classifier</h2>
-          <p>Introduce your tweet:</p>
-           <!-- Inputs for our ML model -->
-            <form action="{{ url_for('predict')}}"method="post">
-              <input type="text" name="tweet" placeholder="Tweets" required="required" />
-              <button type="submit" class="btn btn-primary btn-block btn-large">Classify Tweet!</button>
-            </form>
-         
-          <br>
-          <br>
-          <b> {{ prediction_text }} </b>
-       </div>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="login">
+          <h2>Tweet Sentiment Classifier</h2>
+            <p>Introduce your tweet:</p>
+            <!-- Inputs for our ML model -->
+              <form action="{{ url_for('predict')}}"method="post">
+                <input type="text" name="tweet" placeholder="Tweets" required="required" />
+                <button type="submit" class="btn btn-primary btn-block btn-large">Classify Tweet!</button>
+              </form>
+          
+            <br>
+            <br>
+            <b> {{ prediction_text }} </b>
+      </div>
+  </div>
 </body>
 </html>
