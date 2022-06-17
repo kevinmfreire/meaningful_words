@@ -4,7 +4,6 @@ import nltk
 import string
 import numpy as np
 
-from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
