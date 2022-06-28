@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -12,7 +13,7 @@ from collections import defaultdict
 import multiprocessing
 
 from gensim.models.phrases import Phrases, Phraser
-from gensim.models import Word2Vec
+from gensim.models import Word2Vec, KeyedVectors
 from time import time  # To time our operations
 
 # Using Word2vec for feature extraction, below I've taken examples from https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
@@ -45,11 +46,59 @@ def train_word2vec(clean_data_file):
   # Training model
   w2v_model.train(sentences, total_examples=w2v_model.corpus_count, epochs=30, report_delay=1)
 
-  w2v_path = '../models/w2v_model.pickle'
-  pickle.dump(w2v_model, open(w2v_path, "wb"))
+  # Save word2vec model for future training
+  w2v_model_path = '../models/w2v_model.model'
+  w2v_model.save(w2v_model_path)
 
-def train_classifier():
-  clean_data_file = '../data/processed/clean_df.csv'
+  # Seperate trained vectors into KeyedVectors sp that you don't need the full model state and can be discarded keeping only the vectors and their keys.
+  # This results in a much smaller and faster object that can be mapped for lighning fast loading and sharing vectors in RAM
+  w2v_vector_path = '../models/w2v_model.wordvectors'
+  word_vectors = w2v_model.wv
+  word_vectors.save(w2v_vector_path)
+
+  return w2v_model
+
+def train_classifier_w2v(clean_data_file):
+  target='sentiment'
+  text='text'
+  clean_df = pd.read_csv(clean_data_file)
+  clean_df = clean_df.dropna().reset_index(drop=True)
+  X_train, X_test, y_train, y_test = train_test_data(clean_df[target].values, clean_df[text].values)
+
+
+  w2v = KeyedVectors.load('../models/w2v_model.wordvectors', mmap='r')
+  # w2v = w2v.index_to_key
+
+  unique_words = set(w2v.index_to_key)
+
+  X_train_vect = np.array([np.array([w2v[word] for word in sent.split() if word in unique_words]) for sent in X_train])
+  X_test_vect = np.array([np.array([w2v[word] for word in sent.split() if word in unique_words]) for sent in X_test])
+  # X_train_vect = [[w2v[word] for word in sent.split() if word in unique_words] for sent in X_train]
+  # X_test_vect = [[w2v[word] for word in sent.split() if word in unique_words] for sent in X_test]
+
+  # Compute sentence vectors by averaging the word vectors for the words contained in the sentence
+  X_train_vect_avg = []
+  for v in X_train_vect:
+    if v.size:
+      X_train_vect_avg.append(v.mean(axis=0))
+    else:
+      X_train_vect_avg.append(np.zeros(100, dtype=float))
+          
+  X_test_vect_avg = []
+  for v in X_test_vect:
+    if v.size:
+      X_test_vect_avg.append(v.mean(axis=0))
+    else:
+      X_test_vect_avg.append(np.zeros(100, dtype=float))
+
+  log_reg_model = LogisticRegression()
+  log_reg_model.fit(X_train_vect_avg, y_train.values.ravel())
+
+  pred = log_reg_model.predict(X_test_vect_avg)
+  pred_prob = log_reg_model.predict_proba(X_test_vect_avg)
+  classification_summary(pred,pred_prob, y_test,'Logistic Regression (LR)')
+
+def train_classifier_tfidf(clean_data_file):
   target = 'sentiment'
 
   # porter = PorterStemmer()
@@ -77,8 +126,14 @@ def train_classifier():
 if __name__ == '__main__':
   
   clean_data_file = '../data/processed/clean_df.csv'
-  
 
-  quit()
+  # train_classifier()
+  # quit()
+  # w2v_model = train_word2vec(clean_data_file)
 
-  train()
+  train_classifier_w2v(clean_data_file)
+
+  wv = KeyedVectors.load('../models/w2v_model.wordvectors', mmap='r')
+  print(wv['mother'].shape)
+
+  # train()
