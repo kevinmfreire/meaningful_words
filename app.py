@@ -2,8 +2,7 @@ from flask import Flask, request, render_template
 import pickle
 import sys
 
-sys.path.append("./src")
-sys.path.append("./models")
+sys.path.append("src/")
 
 from src.predict import classify
 
