@@ -1,5 +1,7 @@
 # Sentiment Analysis
 
+![app](./img/app.png)
+
 ## Table of Content
 * [Overview](https://github.com/kevinmfreire/sentiment-analysis#overview)
 * [Background and Motivation](https://github.com/kevinmfreire/sentiment-analysis#background-and-motivation)
