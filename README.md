@@ -1,8 +1,6 @@
 # Sentiment Analysis
 
-<img src="./img/app.png" width="128"/>
-
-![app](./img/app.png)
+![app](img/app.png)
 
 ## Table of Content
 * [Overview](https://github.com/kevinmfreire/sentiment-analysis#overview)
