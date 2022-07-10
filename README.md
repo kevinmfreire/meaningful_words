@@ -1,5 +1,7 @@
 # Sentiment Analysis
 
+<img src="./img/app.png" width="128"/>
+
 ![app](./img/app.png)
 
 ## Table of Content
