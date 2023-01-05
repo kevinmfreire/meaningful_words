@@ -1,8 +1,7 @@
 import streamlit as st
 import pickle
-
+import nltk_setup
 import sys
-
 sys.path.append("src/")
 from src.predict import classify
 from src.utils import render_svg
