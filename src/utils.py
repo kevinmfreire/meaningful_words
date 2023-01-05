@@ -1,5 +1,12 @@
 import pandas as pd
+import base64
 from sklearn.model_selection import train_test_split
+
+def render_svg(svg):
+    """Renders the given svg string."""
+    b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
+    html = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
+    return html
 
 def train_test_data(label, feature, test_size=0.2, random_state=0):
     #Assign labels to target value

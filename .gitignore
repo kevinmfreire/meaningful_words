@@ -1,2 +1,5 @@
 __pycache__
 data/raw/sentiment140.csv
+models/w2v_model.model
+models/w2v_model.pickle
+models/w2v_model.wordvectors
