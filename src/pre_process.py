@@ -13,13 +13,22 @@ from nltk.stem.porter import PorterStemmer
 
 
 def label_decoder(label):
-    '''This function returns models prediction vlaue as positive, negative or neutral sentiment.'''
+    '''
+    The label_decoder function maps an integer label to a sentiment label of "negative", "neutral", or "positive
+    '''
     to_sentiment = {0: "negative", 1: "neutral", 2: "positive"}
     return to_sentiment[label]
 
 
 def tokenizer_porter(text):
-    '''Tokenize text data using the PorterStemmer for stemming words to utmost root word.'''
+    '''
+    The tokenizer_porter function takes a string of text as input and tokenizes it using the Porter Stemmer algorithm to reduce words to their root form.
+    The function first initializes the PorterStemmer object as porter. It then splits the input text into individual words using whitespace as the delimiter. 
+    For each word in the resulting list, it applies the Porter Stemmer algorithm to obtain the root form of the word.
+    The function returns a list of the root forms of all the words in the input text.
+    The docstring for the function provides a brief summary of what the function does. 
+    It states that the function tokenizes text data using the Porter Stemmer algorithm to reduce words to their root form.
+    '''
     porter = PorterStemmer()
     return [porter.stem(word) for word in text.split()]
 
